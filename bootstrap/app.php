@@ -23,9 +23,10 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-// $app->withFacades();
-
-// $app->withEloquent();
+//Facades 提供一个静态接口给在应用程序的服务容器中可以取用的类
+$app->withFacades();
+//Eloquent  提供了漂亮、简洁的 ActiveRecord 实现来和数据库进行交互
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------

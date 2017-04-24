@@ -11,6 +11,17 @@
 |
 */
 
-$app->get('/', function () use ($app) {
-    return $app->version();
+$app->group(['prefix' => 'api/'], function() use($app)
+{
+    $app->post('user','UserController@createUser');
+    $app->put('user/{id}','UserController@updateUser');
+    $app->delete('user/{id}','UserController@deleteUser');
+    $app->get('user','UserController@index');
 });
+
+// $app->get('/','UserController@index' );
+//
+$app->get('/', function () use ($app) {
+
+     return $app->version();
+    });
