@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 
+
+
 class UserController extends Controller
 {
     public function createUser(Request $request)
     {
         $user = User::create($request->all());
-        //return $request->all();
         return response()->json($user);
     }
 
@@ -44,5 +45,15 @@ class UserController extends Controller
     {
         $users = User::all();
         return response()->json($users);
+    }
+
+    public function login(Request $request,$username,$password)
+    {
+        //where多条件查询
+        $user = User::where([
+          'username'=>$username,
+          'password' =>$password
+        ])->first();
+        return response()->json($user);
     }
 }

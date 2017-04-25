@@ -11,12 +11,15 @@
 |
 */
 
-$app->group(['prefix' => 'api/'], function() use($app)
+
+
+$app->group(['prefix' => 'api/user/'], function() use($app)
 {
-    $app->post('user','UserController@createUser');
-    $app->put('user/{id}','UserController@updateUser');
-    $app->delete('user/{id}','UserController@deleteUser');
-    $app->get('user','UserController@index');
+    $app->post('register','UserController@createUser');
+    $app->put('upadate/{id}','UserController@updateUser');
+    $app->delete('delete/{id}','UserController@deleteUser');
+    $app->get('query','UserController@index');
+    $app->get('login/{username}/{password}','UserController@login');
 });
 
 // $app->get('/','UserController@index' );

@@ -1,5 +1,7 @@
 <?php
 
+
+
 require_once __DIR__.'/../vendor/autoload.php';
 
 try {
@@ -60,12 +62,19 @@ $app->singleton(
 |
 */
 
+//注册成全局中间件
+$app->middleware([
+   App\Http\Middleware\EnableCros::class
+]);
+
+
 // $app->middleware([
-//    App\Http\Middleware\ExampleMiddleware::class
+//    App\Http\Middleware\EnableCros::class
 // ]);
 
+// //派中间件给特定路由,cros为键
 // $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
+//     'cros' => App\Http\Middleware\EnableCros::class,
 // ]);
 
 /*
