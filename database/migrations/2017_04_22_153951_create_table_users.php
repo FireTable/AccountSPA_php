@@ -28,7 +28,7 @@ class CreateTableUsers extends Migration
             $table->string('alipay_tips')->nullable();
             $table->string('wechat')->nullable();
             $table->string('wechat_tips')->nullable();
-            $table->timestamp('addtime');
+            //$table->timestamp('addtime');
             //这个是他自己管理自己的timestamps
             //created_at列为仅当行被创建时当前时间戳。
             // updated_at被修改为每次操作的行的数据时当前时间戳。

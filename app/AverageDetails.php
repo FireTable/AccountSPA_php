@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract
+class AverageDetails extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable;
 
@@ -19,24 +19,19 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
 
      //指定表名
-    protected $table = 'users';
+    protected $table = 'averagedetails';
 
     protected $fillable = [
         'id',
-        'nickname',
-        'username',
-        'phone',
-        'email',
-        'location',
-        'age',
-        'sex',
-        'role_id',
-        'alipay',
-        'alipay_tips',
-        'wechat',
-        'wechat_tips',
-        //'addtime',
-        'password',
+        'title',
+        'tips',
+        'averagelist_id',
+        'creator_id',
+        'actor_id',
+        'actor_num',
+        'cost',
+        //是否免费
+        'state',
         'created_at',
         'updated_at',
     ];
