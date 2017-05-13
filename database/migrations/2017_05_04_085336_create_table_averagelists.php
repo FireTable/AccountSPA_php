@@ -18,6 +18,7 @@ class CreateTableAveragelists extends Migration
           $table->string('title');
           $table->string('tips');
           $table->integer('creator_id');
+          $table->string('password');
           $table->string('actor_id');
           $table->string('cost');
           $table->enum('state',array('进行中','已完成'))->default('进行中');

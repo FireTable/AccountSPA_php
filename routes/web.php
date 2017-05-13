@@ -20,6 +20,7 @@ $app->group(['prefix' => 'api/user/'], function() use($app)
     $app->patch('update/{id}','UserController@updateUser');
     $app->delete('delete/{id}','UserController@deleteUser');
     $app->get('query','UserController@index');
+    $app->get('queryActor/{actor_id}','UserController@queryActor');
     $app->get('login/{username}/{password}','UserController@login');
 });
 
@@ -30,6 +31,8 @@ $app->group(['prefix' => 'api/averagelist/'], function() use($app)
     $app->patch('update/{id}','AverageListController@updateAverageList');
     $app->delete('delete/{id}','AverageListController@deleteAverageList');
     $app->get('query','AverageListController@index');
+    $app->get('query/{id}','AverageListController@queryAverageList');
+    $app->patch('addlist/{id}','AverageListController@addAverageList');
 });
 
 //AA分账细节
@@ -39,6 +42,7 @@ $app->group(['prefix' => 'api/averagedetail/'], function() use($app)
     $app->patch('update/{id}','AverageDetailController@updateAverageDetail');
     $app->delete('delete/{id}','AverageDetailController@deleteAverageDetail');
     $app->get('query','AverageDetailController@index');
+    $app->get('query/{id}','AverageDetailController@queryDetails');
 });
 
 // $app->get('/','UserController@index' );

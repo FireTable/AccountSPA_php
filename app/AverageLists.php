@@ -31,6 +31,7 @@ class AverageLists extends Model implements AuthenticatableContract, Authorizabl
         'state',
         'created_at',
         'updated_at',
+        'password',
     ];
 
     /**

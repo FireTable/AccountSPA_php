@@ -33,9 +33,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'role_id',
         'alipay',
         'alipay_tips',
+        'icon',
         'wechat',
         'wechat_tips',
-        //'addtime',
+        'averagelists_id',
         'password',
         'created_at',
         'updated_at',
@@ -47,6 +48,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $hidden = [
-
+        //不让回传密码
+        'password',
     ];
 }

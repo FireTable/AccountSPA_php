@@ -40,5 +40,13 @@ class AverageDetailController extends Controller
         return response()->json($list);
     }
 
+    public function queryDetails(Request $request, $id)
+    {
+      //->get()是所有,->first()是第一个
+        $list = AverageDetails::where([
+          'averagelist_id'=>$id])->get();
+        return response()->json($list);
+    }
+
 
 }

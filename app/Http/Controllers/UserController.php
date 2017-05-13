@@ -28,6 +28,8 @@ class UserController extends Controller
         $user->alipay_tips = $request->input('alipay_tips');
         $user->wechat = $request->input('wechat');
         $user->wechat_tips = $request->input('wechat_tips');
+        //在前端拼接
+        $user->averagelists_id = $request->input('averagelists_id');
         $user->save();
 
         return response()->json($user);
@@ -45,6 +47,19 @@ class UserController extends Controller
     {
         $users = User::all();
         return response()->json($users);
+    }
+
+    public function queryActor(Request $request,$actor_id)
+    {
+      $idList = preg_split('/[-]/', $actor_id);
+      $actorLists = array();
+      //因为是 1-2-3-这种形式,最后一个会空缺,所以-1
+      for($index = 0;$index < count($idList) -1;$index++) {
+        //往数组元素添加新的查到的数据
+        array_push($actorLists,User::find($idList[$index]));
+      }
+
+        return response()->json($actorLists);
     }
 
     public function login(Request $request,$username,$password)
