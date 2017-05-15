@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\AverageLists;
+use App\AverageLists as AverageLists ;
+use App\User ;
+use App\AverageDetails;
 use Illuminate\Http\Request;
 
 
@@ -57,19 +59,44 @@ class AverageListController extends Controller
 
     }
 
-    public function addAverageList(Request $request, $id)
-    {
+    public function addAverageList(Request $request, $id){
         $list = AverageLists::where([
           'id'=>$request->input('id'),
           'password' =>$request->input('password')
         ])->first();
-
         $list->actor_id = ($list->actor_id).($request->input('userid').'-');
-
         $list->save();
-
-
         return response()->json($list);
+    }
+
+    public function outAverageList(Request $request,$id,$userid,$actorid,$averagelistsid)
+    {
+        $flag = 'true';
+
+        $list = AverageLists::find($id);
+
+        if($list->creator_id != $userid){
+          $list->actor_id = $actorid;
+          $list->save();
+
+          $details = AverageDetails::where([
+            'creator_id'=> $userid,
+            'averagelist_id'=> $id
+            ])->delete();
+
+          $user = User::find($userid);
+          $user->averagelists_id = $averagelistsid;
+          $user->save();
+
+        }else{
+          $flag ='false';
+        }
+
+      if($flag == 'true'){
+        return response()->json('success');
+      }else{
+        return response()->json('false');
+      }
     }
 
 

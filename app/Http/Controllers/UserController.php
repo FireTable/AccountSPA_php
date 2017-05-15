@@ -53,7 +53,7 @@ class UserController extends Controller
     {
       $idList = preg_split('/[-]/', $actor_id);
       $actorLists = array();
-      //因为是 1-2-3-这种形式,最后一个会空缺,所以-1
+      //因为是 1-2-3-这种形式,最后一个会空缺,
       for($index = 0;$index < count($idList) -1;$index++) {
         //往数组元素添加新的查到的数据
         array_push($actorLists,User::find($idList[$index]));
@@ -61,6 +61,8 @@ class UserController extends Controller
 
         return response()->json($actorLists);
     }
+
+
 
     public function login(Request $request,$username,$password)
     {
