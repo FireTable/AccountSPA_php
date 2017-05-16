@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    //获取七牛token
+    public function getToken()
+    {
+        $qiniuToken = '3QSNrejV93v8qgNKrrBvxPIEi_zxIqde4xx1Rqj0:H1WJRDM4-tIPKhS9YzQppfsB5DE=:eyJzY29wZSI6InVzZXJpY29uIiwiZGVhZGxpbmUiOjU0MzM0MjUyMzQ1MjM0NTEwMDB9';
+        $token = array("uptoken" => $qiniuToken);
+        return response()->json($token);
+    }
+
     public function createUser(Request $request)
     {
         $user = User::create($request->all());
@@ -24,6 +32,7 @@ class UserController extends Controller
         $user->location = $request->input('location');
         $user->age = $request->input('age');
         $user->sex = $request->input('sex');
+        $user->icon = $request->input('icon');
         $user->alipay = $request->input('alipay');
         $user->alipay_tips = $request->input('alipay_tips');
         $user->wechat = $request->input('wechat');

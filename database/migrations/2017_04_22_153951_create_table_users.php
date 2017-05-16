@@ -21,14 +21,14 @@ class CreateTableUsers extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('location')->nullable();
-            $table->integer('age')->nullable();
+            $table->integer('age');
             $table->string('sex')->nullable();
             $table->enum('role_id',array('0','1','2'))->default('2');
             $table->string('alipay')->nullable();
             $table->string('alipay_tips')->nullable();
             $table->string('wechat')->nullable();
             $table->string('wechat_tips')->nullable();
-            $table->string('icon')->default('https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg');
+            $table->string('icon')->default('http://opzvozftr.bkt.clouddn.com/Fh_8dwU-OUZ4ryZfEI0A6xC-GJRr');
             $table->string('averagelists_id');
             //这个是他自己管理自己的timestamps
             //created_at列为仅当行被创建时当前时间戳。

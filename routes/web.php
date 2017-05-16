@@ -11,6 +11,12 @@
 |
 */
 
+//获取七牛token
+$app->group(['prefix' => 'api/token/'], function() use($app)
+{
+    $app->get('query','UserController@getToken');
+
+});
 
 //用户方面
 $app->group(['prefix' => 'api/user/'], function() use($app)
