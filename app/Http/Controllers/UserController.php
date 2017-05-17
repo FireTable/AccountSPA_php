@@ -18,8 +18,16 @@ class UserController extends Controller
 
     public function createUser(Request $request)
     {
-        $user = User::create($request->all());
-        return response()->json($user);
+        $check = $request->input('username');
+        $checkUser = User::where('username','=',$check)->first();
+        if($checkUser == null){
+          $user = User::create($request->all());
+          $user['check'] = '不存在';
+          return response()->json($user);
+        }else{
+          return response()->json(array('check'=>'已经存在'));
+        }
+
     }
 
     public function updateUser(Request $request, $id)
